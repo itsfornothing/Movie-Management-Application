@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+<style>
+    ul.no_bullets {
+  list-style-type: none; /* Remove bullets */
+  padding: 0; /* Remove padding */
+  margin: 0; /* Remove margins */
+}
+</style>
+{% block title %}Select Movie{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1 class="heading">Select Movie</h1>
+    {% for option in options %}
+      <ul style="list-style-type: none;padding: 0;margin: 0;">
+        <p><li><a href="{{url_for('get_movie_detail', movie_id=option['id'])}}">{% block loop_item scoped %}{{option["original_title"] }} - {{option["release_date"]}} {% endblock %}</a></li></p>
+      </ul>
+    {% endfor %}
+
+</div>
+{% endblock %}
