@@ -112,7 +112,7 @@ def add():
     form = New_form()
     if form.validate_on_submit():
         response = requests.get("https://api.themoviedb.org/3/search/movie",
-                                params={"api_key": 'efec31ba5122b4e5574dae96d155856d',
+                                params={"api_key": 'Your own api key',
                                         "query": form.title.data})
         data = response.json()["results"]
         return render_template('select.html', options=data)
@@ -124,7 +124,7 @@ def add():
 def get_movie_detail():
     movie_id = request.args.get("movie_id")
     response = requests.get(f"https://api.themoviedb.org/3/movie/{movie_id}",
-                            params={"api_key": 'efec31ba5122b4e5574dae96d155856d'})
+                            params={"api_key": 'Your own api key'})
     movie_detail = response.json()
 
     new_movie = Movie(
